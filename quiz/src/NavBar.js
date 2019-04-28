@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import * as Constants from './Constants.js';
 import Random from './Random.js';
-import Gen1 from './Gen1.js';
 import Button from './Button.js';
 
 class NavBar extends Component {

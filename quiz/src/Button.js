@@ -10,7 +10,7 @@ constructor(props) {
 
   render() {
     return (
-        <button className="button">{this.props.text}</button>
+        <button className="gridButton">{this.props.text}</button>
       
     );
   }

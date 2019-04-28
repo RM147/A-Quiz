@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Banner from './Banner.js';
-import Random from './Random.js';
 import NavBar from './NavBar.js';
 
 function App() {
