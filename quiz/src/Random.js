@@ -19,11 +19,14 @@ class Random extends Component {
 
     answerMatch = () => {
         if (this.state.value === QB.answerBank[this.state.rand - 1]) {
-            this.setState({ answer: 'True' });
+            this.setState({ answer: 'Correct!' });
             this.setState({ score: this.state.score + 1 });
-            this.setState({ questions: this.state.questions - 1 });
         } else {
             this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1] });
+
+        }
+
+        if (this.state.questions !== 'N/A') {
             this.setState({ questions: this.state.questions - 1 });
         }
         this.setState({ rand: (Math.floor(Math.random() * (this.props.highEnd - this.props.lowEnd)) + this.props.lowEnd) });
@@ -70,7 +73,7 @@ class Random extends Component {
     }
 
     render() {
-        if (this.state.questions!==0) {
+        if (this.state.questions !== 0) {
             return (
                 <div>
                     <div className="grid2">
@@ -83,12 +86,13 @@ class Random extends Component {
                     <h1>{this.state.rand}</h1>
                     <img className={"image" + this.state.easy}
                         src={"http://www.pokestadium.com/assets/img/sprites/" + this.state.rand + ".png"} />
-                    <div>Answer: <input type="text" onChange={this.changeValue} />
-                        <button className="button" onClick={this.answerMatch}>Submit</button></div>
+                    <div>Answer: <input className="textbox" onChange={this.changeValue} /></div>
+                    <br />
+                    <button className="button" onClick={this.answerMatch}>Submit</button>
 
                     <p>{this.state.answer}</p>
-                    <p>Score: {this.state.score}</p>
-                    <p>Questions left: {this.state.questions}</p>
+                    <p>Score: {this.state.score} Questions left: {this.state.questions}</p>
+                    <p></p>
                     <p>Answers must begin with a capital letter</p>
 
                     <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>
@@ -96,7 +100,12 @@ class Random extends Component {
             );
         } else {
             return (
-                <p>Quiz Complete. Your score was {(this.state.score/this.state.fixedQuestions)*100}%</p>
+                <div>
+                    <p>Quiz Complete. Your score was {(this.state.score / this.state.fixedQuestions) * 100}%</p>
+
+                    <p>Try one of our other quizzes and see how you do.</p>
+                </div>
+
             );
         }
 
