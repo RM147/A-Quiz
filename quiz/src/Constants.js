@@ -9,3 +9,4 @@ export const gen6 = 722
 export const score100 = 'Perfect, well done!'
 export const score90 = 'Great job! Perfection was almost in your grasp.'
 export const score80 = 'Great job!'
+export const score60 = 'Good scores, keep improving!'
