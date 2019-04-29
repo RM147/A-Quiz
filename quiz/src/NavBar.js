@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import * as Constants from './Constants.js';
 import Random from './Random.js';
 import Button from './Button.js';
+import FixedGrid from './FixedGrid.js';
 
 class NavBar extends Component {
     render() {
@@ -18,6 +19,7 @@ class NavBar extends Component {
                     <div><NavLink to="/gen4"><Button text="Gen 4" /></NavLink></div>
                     <div><NavLink to="/gen5"><Button text="Gen 5" /></NavLink></div>
                     <div><NavLink to="/gen6"><Button text="Gen 6" /></NavLink></div>
+                    <div><NavLink to="/grid"><Button text="Grid Test" /></NavLink></div>
                 </div>
                 <div><Route exact path="/" render={() =>
                     <Random lowEnd={Constants.gen0}
@@ -40,6 +42,8 @@ class NavBar extends Component {
                 <div><Route exact path="/gen6" render={() =>
                     <Random lowEnd={Constants.gen5}
                         highEnd={Constants.gen6} />} /></div>
+                <div><Route exact path="/grid" component={FixedGrid}/></div>
+
             </Router>
 
 
