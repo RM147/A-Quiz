@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 'Grid'
+      page: ''
     };
   }
 
@@ -56,7 +56,9 @@ class App extends Component {
             <button className="button" onClick={this.setRand}>Rand</button>
             <h3 className="App">Grid</h3>
             <p>{Constants.gridExpl}</p>
-            <button className="button" onClick={this.setGrid}>Grid</button>
+            <div><button className="button" onClick={this.setGrid}>Grid</button></div>
+
+            <p>{Constants.choiceExpl}</p>
           </div>
         </div>
       );
