@@ -28,6 +28,7 @@ class FixedGrid extends Component {
                     ", has been discovered."});
                     this.setState({ score: this.state.score + 1 });
                     this.setState({ questions: this.state.questions - 1 });
+                    this.refs.answer.value = "";
                     this.forceUpdate();
     
                 }
@@ -48,7 +49,7 @@ class FixedGrid extends Component {
             return (
                 <div>
                     <div className="sticky">
-                        <div >Answer: <input onChange={this.changeValue} /></div>
+                        <div >Answer: <input onChange={this.changeValue} ref="answer"/></div>
                         <br />
                         <button className="button" onClick={this.answerMatch}>Submit</button>
                         <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
