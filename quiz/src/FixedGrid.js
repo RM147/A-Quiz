@@ -10,23 +10,31 @@ class FixedGrid extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            lowEnd: Constants.gen0,
-            highEnd: Constants.gen1,
-            table: _.range(Constants.gen0,Constants.gen1)
+            table: _.range(this.props.lowEnd, this.props.highEnd),
+            score: 0,
+            questions: this.props.highEnd - this.props.lowEnd,
+            result: ''
         };
     }
 
     answerMatch = () => {
-        if(QB.answerBank.includes(this.state.value)){
-            console.log(QB.answerBank.indexOf(this.state.value))
-            this.state.table[QB.answerBank.indexOf(this.state.value)] = <img
-            src = {"http://www.pokestadium.com/assets/img/sprites/" + (QB.answerBank.indexOf(this.state.value)+1) + ".png"}/>
-            console.log(this.state.table)
-            this.forceUpdate();                              
-            
+        if (QB.answerBank.includes(this.state.value)) {
+            for(let i = 0;i<this.state.table.length;i++){
+                if ((QB.answerBank.indexOf(this.state.value)+1) === this.state.table[i]) {
+                    this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/" 
+                    + (QB.answerBank.indexOf(this.state.value) + 1) + ".png"} />
+                    this.setState({ result: "Number " + (QB.answerBank.indexOf(this.state.value)+1) 
+                    + ", "+QB.answerBank[QB.answerBank.indexOf(this.state.value)]+ 
+                    ", has been discovered."});
+                    this.setState({ score: this.state.score + 1 });
+                    this.setState({ questions: this.state.questions - 1 });
+                    this.forceUpdate();
+    
+                }
+            } 
         }
-        
-        
+
+
     }
 
     changeValue = (e) => {
@@ -38,12 +46,17 @@ class FixedGrid extends Component {
     render() {
         return (
             <div>
-                <div><
-                    div>Answer: <input className="textbox" onChange={this.changeValue} /></div>
+                <div className="sticky">
+                    <div >Answer: <input onChange={this.changeValue} /></div>
                     <br />
-                    <button className="button" onClick={this.answerMatch}>Submit</button></div>
+                    <button className="button" onClick={this.answerMatch}>Submit</button>
+                    <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+                    </div>
+
+                
+                <p>{this.state.result}</p>
                 <div className="fixedGrid">
-                    {this.state.table.map(item=>(<div>{item}</div>))}
+                    {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
                 </div>
             </div>
 

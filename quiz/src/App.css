@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+h1{
+  cursor: pointer;
+}
+
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -17,7 +21,13 @@
 .fixedGrid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  
+  border: 0.2px solid black;  
+}
+
+.gridSquare{
+  border: 1px solid black;
+  height: 100px;
+  text-align: center;
 }
 
 .gridButton{
@@ -42,6 +52,13 @@
 
 .imageFalse{
   display: none;
+}
+
+.sticky{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: white; 
 }
 
 
