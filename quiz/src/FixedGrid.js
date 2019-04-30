@@ -19,20 +19,22 @@ class FixedGrid extends Component {
 
     answerMatch = () => {
         if (QB.answerBank.includes(this.state.value)) {
-            for(let i = 0;i<this.state.table.length;i++){
-                if ((QB.answerBank.indexOf(this.state.value)+1) === this.state.table[i]) {
-                    this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/" 
-                    + (QB.answerBank.indexOf(this.state.value) + 1) + ".png"} />
-                    this.setState({ result: "Number " + (QB.answerBank.indexOf(this.state.value)+1) 
-                    + ", "+QB.answerBank[QB.answerBank.indexOf(this.state.value)]+ 
-                    ", has been discovered."});
+            for (let i = 0; i < this.state.table.length; i++) {
+                if ((QB.answerBank.indexOf(this.state.value) + 1) === this.state.table[i]) {
+                    this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
+                        + (QB.answerBank.indexOf(this.state.value) + 1) + ".png"} />
+                    this.setState({
+                        result: "Number " + (QB.answerBank.indexOf(this.state.value) + 1)
+                            + ", " + QB.answerBank[QB.answerBank.indexOf(this.state.value)] +
+                            ", has been discovered."
+                    });
                     this.setState({ score: this.state.score + 1 });
                     this.setState({ questions: this.state.questions - 1 });
                     this.refs.answer.value = "";
                     this.forceUpdate();
-    
+
                 }
-            } 
+            }
         }
 
 
@@ -44,33 +46,34 @@ class FixedGrid extends Component {
     }
 
     isEnter = (e) => {
-        if(e.key=="Enter"){
+        if (e.key == "Enter") {
             this.answerMatch();
         }
     }
 
 
     render() {
-        if(this.state.questions!==0){
+        if (this.state.questions !== 0) {
             return (
                 <div>
                     <div className="sticky">
+                        <p>Answers must begin with a capital letter</p>
                         <div >Answer: <input onChange={this.changeValue} ref="answer"
-                        onKeyPress={this.isEnter}/></div>
+                            onKeyPress={this.isEnter} /></div>
                         <br />
                         <button className="button" onClick={this.answerMatch}>Submit</button>
                         <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
-                        </div>
-    
-                    
+                    </div>
+
+
                     <p>{this.state.result}</p>
                     <div className="fixedGrid">
                         {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
                     </div>
                 </div>
-    
+
             );
-        }else{
+        } else {
             return (
                 <div>
                     <p>You got them all! You really know your stuff. You didn't look things up, did you?</p>
@@ -79,7 +82,7 @@ class FixedGrid extends Component {
                 </div>
             );
         }
-        
+
     }
 }
 export default FixedGrid;
