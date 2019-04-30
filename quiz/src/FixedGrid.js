@@ -43,13 +43,20 @@ class FixedGrid extends Component {
 
     }
 
+    isEnter = (e) => {
+        if(e.key=="Enter"){
+            this.answerMatch();
+        }
+    }
+
 
     render() {
         if(this.state.questions!==0){
             return (
                 <div>
                     <div className="sticky">
-                        <div >Answer: <input onChange={this.changeValue} ref="answer"/></div>
+                        <div >Answer: <input onChange={this.changeValue} ref="answer"
+                        onKeyPress={this.isEnter}/></div>
                         <br />
                         <button className="button" onClick={this.answerMatch}>Submit</button>
                         <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
