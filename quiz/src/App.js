@@ -57,6 +57,8 @@ class App extends Component {
             <h3 className="App">Grid</h3>
             <p>{Constants.gridExpl}</p>
             <div><button className="button" onClick={this.setGrid}>Grid</button></div>
+
+            <p>{Constants.choiceExpl}</p>
           </div>
         </div>
       );
