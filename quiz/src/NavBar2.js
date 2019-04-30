@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import * as Constants from './Constants.js';
 import Button from './Button.js';
 import FixedGrid from './FixedGrid.js';
+import Empty from './Empty.js';
 
 class NavBar2 extends Component {
     render() {
@@ -20,9 +21,7 @@ class NavBar2 extends Component {
                     <div><NavLink to="/gen6"><Button text="Gen 6" /></NavLink></div>
                     
                 </div>
-                <div><Route exact path="/" render={() =>
-                    <FixedGrid lowEnd={Constants.gen0}
-                        highEnd={Constants.gen6} />} /></div>
+                <div><Route exact path="/" component={Empty} /></div>
                 <div><Route exact path="/gen1" render={() =>
                     <FixedGrid lowEnd={Constants.gen0}
                         highEnd={Constants.gen1} />} /></div>
