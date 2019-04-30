@@ -12,7 +12,7 @@ class FixedGrid extends Component {
         this.state = {
             table: _.range(this.props.lowEnd, this.props.highEnd),
             score: 0,
-            questions: this.props.highEnd - this.props.lowEnd,
+            questions: (this.props.highEnd - this.props.lowEnd),
             result: ''
         };
     }
@@ -44,23 +44,34 @@ class FixedGrid extends Component {
 
 
     render() {
-        return (
-            <div>
-                <div className="sticky">
-                    <div >Answer: <input onChange={this.changeValue} /></div>
-                    <br />
-                    <button className="button" onClick={this.answerMatch}>Submit</button>
-                    <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+        if(this.state.questions!==0){
+            return (
+                <div>
+                    <div className="sticky">
+                        <div >Answer: <input onChange={this.changeValue} /></div>
+                        <br />
+                        <button className="button" onClick={this.answerMatch}>Submit</button>
+                        <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+                        </div>
+    
+                    
+                    <p>{this.state.result}</p>
+                    <div className="fixedGrid">
+                        {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
                     </div>
-
-                
-                <p>{this.state.result}</p>
-                <div className="fixedGrid">
-                    {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
                 </div>
-            </div>
+    
+            );
+        }else{
+            return (
+                <div>
+                    <p>You got them all! You really know your stuff. You didn't look things up, did you?</p>
 
-        );
+                    <p>Try one of our other quizzes and see how you do.</p>
+                </div>
+            );
+        }
+        
     }
 }
 export default FixedGrid;
