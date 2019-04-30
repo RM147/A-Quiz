@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 
 class Banner extends Component {
+
+returnHome = () => {
+  this.props.returnHome();
+}
+
   render() {
     return (
-        <h1>Quiz Site</h1>
+        <h1 onClick={this.returnHome}>Quiz Site</h1>
       
     );
   }

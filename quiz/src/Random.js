@@ -17,13 +17,20 @@ class Random extends Component {
         };
     }
 
+    isEnter = (e) => {
+        if(e.key=="Enter"){
+            this.answerMatch();
+        }
+    }
+
     answerMatch = () => {
         if (this.state.value === QB.answerBank[this.state.rand - 1]) {
             this.setState({ answer: 'Correct!' });
             this.setState({ score: this.state.score + 1 });
+            this.refs.answer.value = "";
         } else {
             this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1] });
-
+            this.refs.answer.value = "";
         }
 
         if (this.state.questions !== 'N/A') {
@@ -86,7 +93,8 @@ class Random extends Component {
                     <h1>{this.state.rand}</h1>
                     <img className={"image" + this.state.easy}
                         src={"http://www.pokestadium.com/assets/img/sprites/" + this.state.rand + ".png"} />
-                    <div>Answer: <input className="textbox" onChange={this.changeValue} /></div>
+                    <div>Answer: <input className="textbox" onChange={this.changeValue} 
+                    onKeyPress={this.isEnter} ref="answer"/></div>
                     <br />
                     <button className="button" onClick={this.answerMatch}>Submit</button>
 
