@@ -18,6 +18,10 @@ h1{
   height: 10px;
 }
 
+.grid3{
+  margin: 30px;
+}
+
 .fixedGrid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

@@ -10,7 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: ''
+      page: 'Rand'
     };
   }
 
@@ -49,7 +49,7 @@ class App extends Component {
       return (
         <div>
           <div className="App"><Banner returnHome={this.returnHome}/></div>
-          <div>
+          <div className="grid3">            
             <h2 className="App">Random or Full Grid?</h2>
             <h3 className="App">Random</h3>
             <p>{Constants.randomExpl}</p>
