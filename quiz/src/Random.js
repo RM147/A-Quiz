@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as QB from './QuestionBankPokemon.js';
+import StringSanitiser from './StringSanitiser.js';
 
 class Random extends Component {
 
@@ -18,13 +19,14 @@ class Random extends Component {
     }
 
     isEnter = (e) => {
-        if(e.key=="Enter"){
+        if (e.key === "Enter") {
             this.answerMatch();
         }
     }
 
     answerMatch = () => {
-        if (this.state.value === QB.answerBank[this.state.rand - 1]) {
+        var str = StringSanitiser(this.state.value);
+        if (str === QB.answerBank[this.state.rand - 1]) {
             this.setState({ answer: 'Correct!' });
             this.setState({ score: this.state.score + 1 });
             this.refs.answer.value = "";
@@ -91,17 +93,17 @@ class Random extends Component {
                     </div>
 
                     <h1>{this.state.rand}</h1>
-                    <img className={"image" + this.state.easy}
+                    <img className={"image" + this.state.easy} alt=''
                         src={"http://www.pokestadium.com/assets/img/sprites/" + this.state.rand + ".png"} />
-                    <div>Answer: <input className="textbox" onChange={this.changeValue} 
-                    onKeyPress={this.isEnter} ref="answer"/></div>
+                    <div>Answer: <input className="textbox" onChange={this.changeValue}
+                        onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />
                     <button className="button" onClick={this.answerMatch}>Submit</button>
 
                     <p>{this.state.answer}</p>
                     <p>Score: {this.state.score} Questions left: {this.state.questions}</p>
-                    <p></p>
-                    <p>Answers must begin with a capital letter</p>
+                    
+                    
 
                     <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>
                 </div>

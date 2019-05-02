@@ -3,12 +3,7 @@ import './App.css';
 
 class Button extends Component {
 
-constructor(props) {
-        super(props);
-        
-    }
-
-  render() {
+render() {
     return (
         <button className="gridButton">{this.props.text}</button>
       

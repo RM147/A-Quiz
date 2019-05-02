@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as Constants from './Constants.js';
 import * as QB from './QuestionBankPokemon.js';
+import StringSanitiser from './StringSanitiser.js';
 import _ from 'lodash';
 
 
@@ -18,14 +19,15 @@ class FixedGrid extends Component {
     }
 
     answerMatch = () => {
-        if (QB.answerBank.includes(this.state.value)) {
+        var str = StringSanitiser(this.state.value);
+        if (QB.answerBank.includes(str)) {
             for (let i = 0; i < this.state.table.length; i++) {
-                if ((QB.answerBank.indexOf(this.state.value) + 1) === this.state.table[i]) {
+                if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
                     this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
-                        + (QB.answerBank.indexOf(this.state.value) + 1) + ".png"} />
+                        + (QB.answerBank.indexOf(str) + 1) + ".png"} alt=''/>
                     this.setState({
-                        result: "Number " + (QB.answerBank.indexOf(this.state.value) + 1)
-                            + ", " + QB.answerBank[QB.answerBank.indexOf(this.state.value)] +
+                        result: "Number " + (QB.answerBank.indexOf(str) + 1)
+                            + ", " + QB.answerBank[QB.answerBank.indexOf(str)] +
                             ", has been discovered."
                     });
                     this.setState({ score: this.state.score + 1 });
@@ -46,7 +48,7 @@ class FixedGrid extends Component {
     }
 
     isEnter = (e) => {
-        if (e.key == "Enter") {
+        if (e.key === "Enter") {
             this.answerMatch();
         }
     }
@@ -56,8 +58,7 @@ class FixedGrid extends Component {
         if (this.state.questions !== 0) {
             return (
                 <div>
-                    <div className="sticky">
-                        <p>Answers must begin with a capital letter</p>
+                    <div className="sticky">                        
                         <div >Answer: <input onChange={this.changeValue} ref="answer"
                             onKeyPress={this.isEnter} /></div>
                         <br />
@@ -68,7 +69,7 @@ class FixedGrid extends Component {
 
                     <p>{this.state.result}</p>
                     <div className="fixedGrid">
-                        {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
+                        {this.state.table.map(item => (<div className="gridSquare" key={item}>{item}</div>))}
                     </div>
                 </div>
 
