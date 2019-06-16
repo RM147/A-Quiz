@@ -11,10 +11,10 @@ export const score90 = 'Great job! Perfection was almost in your grasp.'
 export const score80 = 'Great job!'
 export const score60 = 'Good scores, keep improving!'
 
-export const randomExpl = "This mode will have ask you about individual Pokemon."+
+export const randomExpl = "This mode will ask you about individual Pokemon."+
 " The Pokemon will be randomly pulled out from the selected range e.g. gen 1."+
 " You can keep answering questions endlessly or choose a limited number of questions"+
-" and get a score. If you're feeling hardcore, try with just National Dex numbers"+
+" and get a score. If you're feeling hardcore, try just National Dex numbers"+
 " with no pictures."
 
 export const gridExpl = "This mode will present all the Pokemon within a selected"+
