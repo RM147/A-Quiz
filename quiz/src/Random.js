@@ -95,16 +95,13 @@ class Random extends Component {
                     <h1>{this.state.rand}</h1>
                     <img className={"image" + this.state.easy} alt=''
                         src={"http://www.pokestadium.com/assets/img/sprites/" + this.state.rand + ".png"} />
-                    <div>Answer: <input className="textbox" onChange={this.changeValue}
+                    <div>Answer: <input onChange={this.changeValue}
                         onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />
                     <button className="button" onClick={this.answerMatch}>Submit</button>
 
                     <p>{this.state.answer}</p>
                     <p>Score: {this.state.score} Questions left: {this.state.questions}</p>
-                    
-                    
-
                     <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>
                 </div>
             );
