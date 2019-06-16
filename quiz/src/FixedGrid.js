@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import * as Constants from './Constants.js';
 import * as QB from './QuestionBankPokemon.js';
 import StringSanitiser from './StringSanitiser.js';
 import _ from 'lodash';
-
 
 class FixedGrid extends Component {
 
@@ -33,7 +31,7 @@ class FixedGrid extends Component {
                     this.setState({ score: this.state.score + 1 });
                     this.setState({ questions: this.state.questions - 1 });
                     this.refs.answer.value = "";
-                    this.forceUpdate();
+                    // this.forceUpdate();
 
                 }
             }
@@ -64,12 +62,10 @@ class FixedGrid extends Component {
                         <br />
                         <button className="button" onClick={this.answerMatch}>Submit</button>
                         <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+                        <p>{this.state.result}</p>
                     </div>
-
-
-                    <p>{this.state.result}</p>
                     <div className="fixedGrid">
-                        {this.state.table.map(item => (<div className="gridSquare" key={item}>{item}</div>))}
+                        {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
                     </div>
                 </div>
 
