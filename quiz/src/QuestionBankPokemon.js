@@ -439,7 +439,7 @@ export const answerBank= [
 	"Bronzor",
 	"Bronzong",
 	"Bonsly",
-	"Mime Jr",
+	"Mime jr",
 	"Happiny",
 	"Chatot",
 	"Spiritomb",
