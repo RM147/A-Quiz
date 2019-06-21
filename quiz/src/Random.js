@@ -33,6 +33,9 @@ class Random extends Component {
         } else {
             this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1] });
             this.refs.answer.value = "";
+            if(this.state.questions==='N/A'){
+                this.setState({score: 0})
+            }
         }
 
         if (this.state.questions !== 'N/A') {
