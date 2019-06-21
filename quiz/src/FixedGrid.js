@@ -3,6 +3,7 @@ import './App.css';
 import * as QB from './QuestionBankPokemon.js';
 import StringSanitiser from './StringSanitiser.js';
 import _ from 'lodash';
+import Timer from './Timer.js';
 
 class FixedGrid extends Component {
 
@@ -63,6 +64,7 @@ class FixedGrid extends Component {
                         <button className="button" onClick={this.answerMatch}>Submit</button>
                         <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
                         <p>{this.state.result}</p>
+                        <Timer/>
                     </div>
                     <div className="fixedGrid">
                         {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
