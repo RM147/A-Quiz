@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import * as Constants from './Constants.js';
 import Random from './Random.js';
 import Button from './Button.js';
+import Timer from './Timer.js';
 
 class NavBar extends Component {
     render() {
@@ -40,8 +41,6 @@ class NavBar extends Component {
                 <div><Route exact path="/gen6" render={() =>
                     <Random lowEnd={Constants.gen5}
                         highEnd={Constants.gen6} />} /></div>
-                
-
             </Router>
 
 
