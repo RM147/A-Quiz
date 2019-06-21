@@ -93,7 +93,7 @@ class Random extends Component {
                     </div>
 
                     <h1>{this.state.rand}</h1>                    
-                    <img className="Pokemon" src={"thumbnails/"+this.state.rand+".png"}/>
+                    <img className={"image"+this.state.easy} src={"thumbnails/"+this.state.rand+".png"}/>
                     <div>Answer: <input onChange={this.changeValue}
                         onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />

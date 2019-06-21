@@ -59,6 +59,11 @@ h1{
   cursor: pointer;
 }
 
+.image{
+  height: 80px;
+  width: 80px;
+}
+
 .imageFalse{
   display: none;
 }
@@ -75,11 +80,6 @@ h1{
 .play:disabled{
   background-color: lightcoral;
    
-}
-
-.Pokemon{
-  height: 80px;
-  width: 80px;
 }
 
 .sticky{
