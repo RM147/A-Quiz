@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import play from './playbutton.png';
 const ms = require('pretty-ms');
+
 
 class Timer extends Component {
 
@@ -36,8 +38,8 @@ class Timer extends Component {
         return (
             <div>
                 <p>{ms(this.state.time*1000)}</p>
-                <button onClick={this.startTimer}>Start/Stop Timer</button>
-                <button onClick={this.resetTimer}>Reset Timer</button>
+                <button className="play" onClick={this.startTimer}>&#9655; &#9015;&#9015;</button>
+                <button className="play" onClick={this.resetTimer} disabled={this.state.isOn}>&#8634;</button>
             </div>
 
 

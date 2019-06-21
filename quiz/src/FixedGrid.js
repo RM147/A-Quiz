@@ -57,14 +57,19 @@ class FixedGrid extends Component {
         if (this.state.questions !== 0) {
             return (
                 <div>
-                    <div className="sticky">                        
+                    <div className="sticky">
+                        <div className="grid4">
+                        <div>
                         <div >Answer: <input onChange={this.changeValue} ref="answer"
                             onKeyPress={this.isEnter} /></div>
-                        <br />
-                        <button className="button" onClick={this.answerMatch}>Submit</button>
-                        <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
-                        <p>{this.state.result}</p>
-                        <Timer/>
+                            <br />
+                            <button className="button" onClick={this.answerMatch}>Submit</button>
+                            <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+                            <p>{this.state.result}</p>
+                        </div>
+                            
+                            <Timer/>
+                        </div>        
                     </div>
                     <div className="fixedGrid">
                         {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}

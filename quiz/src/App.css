@@ -20,7 +20,7 @@
 
 .grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 50px;
 }
 
@@ -32,6 +32,11 @@
 
 .grid3{
   margin: 30px;
+}
+
+.grid4{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
 }
 
 .gridButton{
@@ -56,6 +61,20 @@ h1{
 
 .imageFalse{
   display: none;
+}
+
+.play{
+  background-color: red;
+  color: white;
+  width: 50px;
+  cursor: pointer;
+  border: none;
+  margin: 0.5px;  
+}
+
+.play:disabled{
+  background-color: lightcoral;
+   
 }
 
 .sticky{
