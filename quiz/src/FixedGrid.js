@@ -13,32 +13,53 @@ class FixedGrid extends Component {
             table: _.range(this.props.lowEnd, this.props.highEnd),
             score: 0,
             questions: (this.props.highEnd - this.props.lowEnd),
-            result: ''
+            result: '',
+            time: 0,
+            isOn: false
         };
     }
 
-    answerMatch = () => {
-        var str = StringSanitiser(this.state.value);
-        if (QB.answerBank.includes(str)) {
-            for (let i = 0; i < this.state.table.length; i++) {
-                if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
-                    this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
-                        + (QB.answerBank.indexOf(str) + 1) + ".png"} alt=''/>
-                    this.setState({
-                        result: "Number " + (QB.answerBank.indexOf(str) + 1)
-                            + ", " + QB.answerBank[QB.answerBank.indexOf(str)] +
-                            ", has been discovered."
-                    });
-                    this.setState({ score: this.state.score + 1 });
-                    this.setState({ questions: this.state.questions - 1 });
-                    this.refs.answer.value = "";
-                    // this.forceUpdate();
+    startTimer = () => {
+        if (this.state.isOn) {
+            clearInterval(this.timer)
+            this.setState({ isOn: !this.state.isOn });
+        } else {
+            this.timer = setInterval(() => this.setState({
+                time: this.state.time + 1
+            }), 1000);
+            this.setState({ isOn: !this.state.isOn });
+        }
 
+    }
+
+    resetTimer = () => {
+        if (!this.state.isOn) {
+            this.setState({ time: 0 })
+        }
+
+    }
+
+    answerMatch = () => {
+        if (this.state.isOn) {
+            var str = StringSanitiser(this.state.value);
+            if (QB.answerBank.includes(str)) {
+                for (let i = 0; i < this.state.table.length; i++) {
+                    if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
+                        this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
+                            + (QB.answerBank.indexOf(str) + 1) + ".png"} alt='' />
+                        this.setState({
+                            result: "Number " + (QB.answerBank.indexOf(str) + 1)
+                                + ", " + QB.answerBank[QB.answerBank.indexOf(str)] +
+                                ", has been discovered."
+                        });
+                        this.setState({ score: this.state.score + 1 });
+                        this.setState({ questions: this.state.questions - 1 });
+                        this.refs.answer.value = "";
+
+                    }
                 }
             }
         }
-
-
     }
 
     changeValue = (e) => {
@@ -59,17 +80,20 @@ class FixedGrid extends Component {
                 <div>
                     <div className="sticky">
                         <div className="grid4">
-                        <div>
-                        <div >Answer: <input onChange={this.changeValue} ref="answer"
-                            onKeyPress={this.isEnter} /></div>
-                            <br />
-                            <button className="button" onClick={this.answerMatch}>Submit</button>
-                            <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
-                            <p>{this.state.result}</p>
+                            <div>
+                                <div >Answer: <input onChange={this.changeValue} ref="answer"
+                                    onKeyPress={this.isEnter} /></div>
+                                <br />
+                                <button className="button" onClick={this.answerMatch}>Submit</button>
+                                <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
+                                <p>{this.state.result}</p>
+                            </div>
+
+                            <Timer time={this.state.time}
+                                isOn={this.state.isOn}
+                                startTimer={this.startTimer}
+                                resetTimer={this.resetTimer} />
                         </div>
-                            
-                            <Timer/>
-                        </div>        
                     </div>
                     <div className="fixedGrid">
                         {this.state.table.map(item => (<div className="gridSquare">{item}</div>))}
