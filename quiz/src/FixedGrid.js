@@ -34,7 +34,11 @@ class FixedGrid extends Component {
 
     resetTimer = () => {
         if (!this.state.isOn) {
-            this.setState({ time: 0 })
+            this.setState({ time: 0 });
+            this.setState({table: _.range(this.props.lowEnd, this.props.highEnd)});
+            this.setState({questions: (this.props.highEnd - this.props.lowEnd)});
+            this.setState({score: 0});
+            this.setState({result: ''});
         }
 
     }
