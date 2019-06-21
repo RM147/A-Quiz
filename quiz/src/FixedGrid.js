@@ -43,6 +43,9 @@ class FixedGrid extends Component {
         if (this.state.isOn) {
             var str = StringSanitiser(this.state.value);
             if (QB.answerBank.includes(str)) {
+                if(this.state.questions===1){
+                    this.startTimer();
+                }
                 for (let i = 0; i < this.state.table.length; i++) {
                     if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
                         this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
@@ -107,6 +110,8 @@ class FixedGrid extends Component {
                     <p>You got them all! You really know your stuff. You didn't look things up, did you?</p>
 
                     <p>Try one of our other quizzes and see how you do.</p>
+
+                    <p>Your time was {this.state.time} s</p>
                 </div>
             );
         }
