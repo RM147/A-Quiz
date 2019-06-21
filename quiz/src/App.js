@@ -4,13 +4,18 @@ import Banner from './Banner.js';
 import NavBar from './NavBar.js';
 import NavBar2 from './NavBar2.js';
 import * as Constants from './Constants.js';
+import Hardcore from './Hardcore.js';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      page: 'Rand'
+      page: 'Hardcore',
+      lowEnd: 1,
+      lowMessage: '',
+      highEnd: 810,
+      highMessage: ''
     };
   }
 
@@ -24,16 +29,45 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  returnHome = () => {
-    this.setState({page: ''})
+  setHarcore = () => {
+    this.setState({ page: 'Hardcore' })
     this.forceUpdate();
+  }
+
+  returnHome = () => {
+    this.setState({ page: '' })
+    this.forceUpdate();
+  }
+
+  changeLowValue = (e) => {
+    if (e.target.value < 1) {
+      this.setState({ lowEnd: 1 });
+    } else if (e.target.value > 809) {
+      this.setState({ lowEnd: 809 });
+    } else if (e.target.value >= this.state.highEnd) {
+      this.setState({ lowEnd: this.state.highEnd - 1 });
+    } else {
+      this.setState({ lowEnd: e.target.value });
+    }
+  }
+
+  changeHighValue = (e) => {
+    if (e.target.value < 2) {
+      this.setState({ highEnd: 2 });
+    } else if (e.target.value > 810) {
+      this.setState({ highEnd: 810 });
+    } else if (e.target.value <= this.state.lowEnd) {
+      this.setState({ highEnd: this.state.lowEnd -(-1) });
+    } else {
+      this.setState({ highEnd: e.target.value });
+    }
   }
 
   render() {
     if (this.state.page === 'Rand') {
       return (
         <div>
-          <div className="App"><Banner returnHome={this.returnHome}/></div>
+          <div className="App"><Banner returnHome={this.returnHome} /></div>
           <div className="App"><NavBar /></div>
         </div>
       );
@@ -41,15 +75,27 @@ class App extends Component {
     } else if (this.state.page === 'Grid') {
       return (
         <div>
-          <div className="App"><Banner returnHome={this.returnHome}/></div>
+          <div className="App"><Banner returnHome={this.returnHome} /></div>
           <div className="App"><NavBar2 /></div>
         </div>
       )
-    }else{
+    } else if (this.state.page === 'Hardcore') {
       return (
         <div>
-          <div className="App"><Banner returnHome={this.returnHome}/></div>
-          <div className="grid3">            
+          <div className="App"><Banner returnHome={this.returnHome} /></div>
+          <h3 className="gridButton">Hardcore Mode</h3>
+          <div>Low:<input type="number" onChange={this.changeLowValue} /></div>
+          <div>High:<input type="number" onChange={this.changeHighValue} /></div>
+          <div className="App"><Hardcore lowEnd={this.state.lowEnd}
+            highEnd={this.state.highEnd} /></div>
+        </div>
+      )
+
+    } else {
+      return (
+        <div>
+          <div className="App"><Banner returnHome={this.returnHome} /></div>
+          <div className="grid3">
             <h2 className="App">Random or Full Grid?</h2>
             <h3 className="App">Random</h3>
             <p>{Constants.randomExpl}</p>
@@ -57,13 +103,16 @@ class App extends Component {
             <h3 className="App">Grid</h3>
             <p>{Constants.gridExpl}</p>
             <div><button className="button" onClick={this.setGrid}>Grid</button></div>
+            <h3 className="App">Hardcore</h3>
+            <p>{Constants.hardcoreExpl}</p>
+            <button className="button" onClick={this.setRand}>Hardcore</button>
 
             <p>{Constants.choiceExpl}</p>
           </div>
         </div>
       );
     }
-    
+
   }
 }
 

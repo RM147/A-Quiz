@@ -11,4 +11,6 @@ export const randomExpl = "This mode will ask you about individual Pokemon. The 
 
 export const gridExpl = "This mode will present all the Pokemon within a selected range as a grid of numbers. Whenever you submit a correct answer, the number will be replaced with an image of that Pokemon.";
 
+export const hardcoreExpl = "Exclusively hardcore mode. This mode will give you no pictures, just National Dex numbers. This mode is mostly intended for if you want to learn Pokemon by National Dex numbers. You can choose your range, your can set it so your score resets if you get a wrong answer and the numbers don't even have to be random. Whatever makes you learn the best.";
+
 export const choiceExpl = "To return to this choice at any time, click Quiz Site.";
