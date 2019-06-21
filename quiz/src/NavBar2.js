@@ -41,13 +41,8 @@ class NavBar2 extends Component {
                     <FixedGrid lowEnd={Constants.gen5}
                         highEnd={Constants.gen6} />} /></div>
                 
-
             </Router>
-
-
-
         );
     }
 }
-// Rename later
 export default NavBar2;

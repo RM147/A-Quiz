@@ -48,7 +48,7 @@ class FixedGrid extends Component {
                 }
                 for (let i = 0; i < this.state.table.length; i++) {
                     if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
-                        this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
+                        this.state.table[i] = <img src={"thumbnails/"
                             + (QB.answerBank.indexOf(str) + 1) + ".png"} alt='' />
                         this.setState({
                             result: "Number " + (QB.answerBank.indexOf(str) + 1)

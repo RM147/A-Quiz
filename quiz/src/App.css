@@ -77,6 +77,11 @@ h1{
    
 }
 
+.Pokemon{
+  height: 80px;
+  width: 80px;
+}
+
 .sticky{
   position: sticky;
   position: -webkit-sticky;

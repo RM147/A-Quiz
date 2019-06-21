@@ -92,9 +92,8 @@ class Random extends Component {
                         <button className="gridButton" onClick={this.changeQuestions4}>50 Questions</button>
                     </div>
 
-                    <h1>{this.state.rand}</h1>
-                    <img className={"image" + this.state.easy} alt=''
-                        src={"http://www.pokestadium.com/assets/img/sprites/" + this.state.rand + ".png"} />
+                    <h1>{this.state.rand}</h1>                    
+                    <img className="Pokemon" src={"thumbnails/"+this.state.rand+".png"}/>
                     <div>Answer: <input onChange={this.changeValue}
                         onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />
