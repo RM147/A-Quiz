@@ -69,7 +69,7 @@ class Hardcore extends Component {
         });
         return (
             <div>
-                <Dropdown/>
+                <Dropdown low={this.props.lowEnd} high={this.props.highEnd}/>
                 <h1>{this.state.rand}</h1>
                 <div>Answer: <input onChange={this.changeValue}
                     onKeyPress={this.isEnter} ref="answer" /></div>
