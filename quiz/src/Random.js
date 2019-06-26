@@ -30,11 +30,14 @@ class Random extends Component {
             this.setState({ answer: 'Correct!' });
             this.setState({ score: this.state.score + 1 });
             this.refs.answer.value = "";
-        } else {
-            this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1] });
+        } else {            
             this.refs.answer.value = "";
             if(this.state.questions==='N/A'){
                 this.setState({score: 0})
+                this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1]
+            +". Your score was reset." });
+            }else{
+                this.setState({ answer: 'False. The answer is: ' + QB.answerBank[this.state.rand - 1] });
             }
         }
 
@@ -96,7 +99,8 @@ class Random extends Component {
                     </div>
 
                     <h1>{this.state.rand}</h1>                    
-                    <img className={"image"+this.state.easy} src={"thumbnails/"+this.state.rand+".png"}/>
+                    <img className={"image"+this.state.easy} src={"thumbnails/"+this.state.rand+".png"}
+                    alt=""/>
                     <div>Answer: <input onChange={this.changeValue}
                         onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />
@@ -104,7 +108,7 @@ class Random extends Component {
 
                     <p>{this.state.answer}</p>
                     <p>Score: {this.state.score} Questions left: {this.state.questions}</p>
-                    <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>
+                    <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>                    
                 </div>
             );
         } else {

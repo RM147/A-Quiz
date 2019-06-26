@@ -66,6 +66,8 @@ class FixedGrid extends Component {
                     }
                 }
             }
+        }else{
+            this.setState({result: "You can only submit answers when the timer is running."})
         }
     }
 
@@ -93,7 +95,7 @@ class FixedGrid extends Component {
                                 <br />
                                 <button className="button" onClick={this.answerMatch}>Submit</button>
                                 <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
-                                <p>{this.state.result}</p>
+                                <p>{this.state.result}</p>                                
                             </div>
 
                             <Timer time={this.state.time}

@@ -9,7 +9,8 @@
     padding-left: 7px; 
     font-size: 16px;
     border: none;
-    cursor: pointer;    
+    cursor: pointer;
+    margin: 0.5px;    
 }
 
 .fixedGrid{
@@ -58,6 +59,10 @@
 
 h1{
   cursor: pointer;
+}
+
+.highScore{
+  color: goldenrod;
 }
 
 .image{
