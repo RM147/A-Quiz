@@ -14,7 +14,7 @@ class Random extends Component {
             score: 0,
             fixedQuestions: 0,
             questions: 'N/A',
-            easy: "True"
+            easy: true
         };
     }
 
@@ -79,11 +79,7 @@ class Random extends Component {
     }
 
     easyModeSwitch = () => {
-        if (this.state.easy === "False") {
-            this.setState({ easy: "True" });
-        } else if (this.state.easy === "True") {
-            this.setState({ easy: "False" });
-        }
+        this.setState({easy: !this.state.easy});
 
     }
 
@@ -98,9 +94,10 @@ class Random extends Component {
                         <button className="gridButton" onClick={this.changeQuestions4}>50 Questions</button>
                     </div>
 
-                    <h1>{this.state.rand}</h1>                    
-                    <img className={"image"+this.state.easy} src={"thumbnails/"+this.state.rand+".png"}
-                    alt=""/>
+                    <h1>{this.state.rand}</h1>
+                    {this.state.easy &&
+                        <img className="image" src={"thumbnails/"+this.state.rand+".png"}
+                        alt=""/>}         
                     <div>Answer: <input onChange={this.changeValue}
                         onKeyPress={this.isEnter} ref="answer" /></div>
                     <br />
@@ -108,7 +105,7 @@ class Random extends Component {
 
                     <p>{this.state.answer}</p>
                     <p>Score: {this.state.score} Questions left: {this.state.questions}</p>
-                    <button className="button" onClick={this.easyModeSwitch}>Easy Mode Enabled: {this.state.easy}</button>                    
+                    <button className="button" onClick={this.easyModeSwitch}>Easy Mode {this.state.easy ? 'En':'Dis'}abled</button>                    
                 </div>
             );
         } else {
