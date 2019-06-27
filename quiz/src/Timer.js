@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import play from './playbutton.png';
 const ms = require('pretty-ms');
-
 
 class Timer extends Component {
 

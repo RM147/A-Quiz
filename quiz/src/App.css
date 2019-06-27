@@ -9,7 +9,8 @@
     padding-left: 7px; 
     font-size: 16px;
     border: none;
-    cursor: pointer;    
+    cursor: pointer;
+    margin: 0.5px;    
 }
 
 .fixedGrid{
@@ -20,7 +21,7 @@
 
 .grid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 50px;
 }
 
@@ -47,6 +48,7 @@
     border: none;
     cursor: pointer;
     width: 99%;
+    text-align: center;
 }
 
 .gridSquare{
@@ -57,6 +59,15 @@
 
 h1{
   cursor: pointer;
+}
+
+.highScore{
+  color: goldenrod;
+}
+
+.image{
+  height: 80px;
+  width: 80px;
 }
 
 .imageFalse{

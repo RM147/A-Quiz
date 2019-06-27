@@ -34,7 +34,11 @@ class FixedGrid extends Component {
 
     resetTimer = () => {
         if (!this.state.isOn) {
-            this.setState({ time: 0 })
+            this.setState({ time: 0 });
+            this.setState({table: _.range(this.props.lowEnd, this.props.highEnd)});
+            this.setState({questions: (this.props.highEnd - this.props.lowEnd)});
+            this.setState({score: 0});
+            this.setState({result: ''});
         }
 
     }
@@ -48,7 +52,7 @@ class FixedGrid extends Component {
                 }
                 for (let i = 0; i < this.state.table.length; i++) {
                     if ((QB.answerBank.indexOf(str) + 1) === this.state.table[i]) {
-                        this.state.table[i] = <img src={"http://www.pokestadium.com/assets/img/sprites/"
+                        this.state.table[i] = <img src={"thumbnails/"
                             + (QB.answerBank.indexOf(str) + 1) + ".png"} alt='' />
                         this.setState({
                             result: "Number " + (QB.answerBank.indexOf(str) + 1)
@@ -62,6 +66,8 @@ class FixedGrid extends Component {
                     }
                 }
             }
+        }else{
+            this.setState({result: "You can only submit answers when the timer is running."})
         }
     }
 
@@ -89,7 +95,7 @@ class FixedGrid extends Component {
                                 <br />
                                 <button className="button" onClick={this.answerMatch}>Submit</button>
                                 <p>Score: {this.state.score} Pokemon Left to get: {this.state.questions}</p>
-                                <p>{this.state.result}</p>
+                                <p>{this.state.result}</p>                                
                             </div>
 
                             <Timer time={this.state.time}
