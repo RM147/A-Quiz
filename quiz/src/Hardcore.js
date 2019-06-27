@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import StringSanitiser from './StringSanitiser.js';
 import * as QB from './QuestionBankPokemon.js';
-import Dropdown from './Dropdown';
 var classnames = require('classnames');
 
 class Hardcore extends Component {
@@ -69,7 +68,6 @@ class Hardcore extends Component {
         });
         return (
             <div>
-                <Dropdown low={this.props.lowEnd} high={this.props.highEnd}/>
                 <h1>{this.state.rand}</h1>
                 <div>Answer: <input onChange={this.changeValue}
                     onKeyPress={this.isEnter} ref="answer" /></div>
